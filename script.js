@@ -24,12 +24,24 @@ const arrayIcone = [
     { name: 'user-ninja', prefix: 'fa-', type: 'user', family: 'fas' },
     { name: 'user-secret', prefix: 'fa-', type: 'user', family: 'fas' }
 ];
-
-
 // type        color   hex      rgba
 // animal    = blue    #0000ff  rgba(0,0,255,255)
 // vegetable = orange  #ffa500  rgba(255,165,0,255) 
 // user      = purple  #800080  rgba(128,0,128,255)
+
+// .querySelector -> seleziono l'elemento del DOM dove metterò l'array di icone
+const domArrayIcone = document.querySelector(".container");
+
+// Ciclo For (classico) -> stampare tutte le icone dell'array originale
+for (let i = 0; i < arrayIcone.length; i++) {
+    // Prendo l'indice dall'array per ciclare
+    const iconaI = arrayIcone[i];
+    // .innerHTML -> "inietto" l'html con gli oggetti ciclati tramite l'indice
+    domArrayIcone.innerHTML += `<div class="col text-center">    
+                                    <i class="${iconaI.family} ${iconaI.prefix}${iconaI.name}"></i>
+                                    <p>${iconaI.name}</p>
+                                </div>`
+};
 
 
 
