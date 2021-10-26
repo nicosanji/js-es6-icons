@@ -15,3 +15,8 @@ function innerIconeColor(arrayIcone) {
 };
 // Dichiaro la funzione con il nuovo array per mostrarlo da subito
 innerIconeColor(arrayIconeColor);
+
+
+
+
+

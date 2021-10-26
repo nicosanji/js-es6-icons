@@ -46,11 +46,8 @@ let arrayIconeColor = arrayIcone.map(icona => {
     return iconaColor;
 });
 
-
-
-
-
-
-
-
-
+// .addEventListener("change", event) -> "apposta" per le select, input ecc...
+domSelect.addEventListener("change", function () {
+    // .filter -> devo filtrare attraverso la "select" gli elementi del nuovo Array tramite il type 
+    let changeType = this.value;
+    let filterType = arrayIconeColor.filter
