@@ -4,6 +4,7 @@
 // 3) Creiamo una select con i tipi di icone e usiamola per filtrare 
 //    le icone.
 
+"use strict";
 
 // Array originale -> icone e testi (name/prefix/type/family)
 const arrayIcone = [
@@ -24,34 +25,31 @@ const arrayIcone = [
     { name: 'user-ninja', prefix: 'fa-', type: 'user', family: 'fas' },
     { name: 'user-secret', prefix: 'fa-', type: 'user', family: 'fas' }
 ];
-console.log(arrayIcone);
-
-// .querySelector -> seleziono l'elemento del DOM dove metterò l'array di icone
-const domArrayIcone = document.querySelector(".row");
-
-// Array di Object -> type icone = colore HEX
-const coloreType = { animal: "#0000ff", vegetable: "#ffa500", user: "#800080" };
-console.log(coloreType);
-
-// Ciclo For (classico) -> realizzo le icone e assegno ad ogni icona le sue proprietà con destructuring
-for (let i = 0; i < arrayIcone.length; i++) {
-    const icona = arrayIcone[i];
-    // Destructuring -> posso "prendere" le proprietà di ogni icona (in ordine) dell'Array originale
-    const { name, prefix, family, type } = icona;
-    const colore = coloreType[type];
-    // Assegno le proprietà da una funzione esterna alle nuove costanti
-    innerIcone(name, prefix, family, colore);
-};
 
 
-// Function -> passo le singole proprietà per realizzare l'icona e il testo
-// pr1 = name / pr2 = prefix / pr3 = family / pr4 = color                 
-function innerIcone(pr1, pr2, pr3, pr4) {
-    domArrayIcone.innerHTML += `<div class="col-3 text-center p-2">                                                    
-                                    <h3 style="color:${pr4}"><i class="${pr3} ${pr2}${pr1}"></i></h3> 
-                                    <h5 style="text-transform:uppercase">${pr1}</h5>
-                                </div>`
-};
+// .querySelector -> individuo gli elementi html che mi servono tramite la classe
+const domArrayIcone = document.querySelector(".row"); // Icone
+const domSelect = document.querySelector(".form-select"); // Select
+
+
+// .map -> inserisco la proprietà "color" in ogni elemento dell'Array originale e genero un nuovo Array
+let arrayIconeColor = arrayIcone.map(icona => {
+    // Destructuring -> "genero" nuove variabili dagli elementi dell'Array originale
+    const { name, prefix, type, family } = icona;
+    
+    let iconaColor = { name, prefix, type, family };
+    // Condizione -> colori in base al type
+    if (iconaColor.type === "animal") { iconaColor["color"] = "#0000ff"; };
+    if (iconaColor.type === "vegetable") { iconaColor["color"] = "#ffa500"; };
+    if (iconaColor.type === "user") { iconaColor["color"] = "#800080"; };
+
+    return iconaColor;
+});
+
+
+
+
+
 
 
 
