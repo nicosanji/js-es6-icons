@@ -39,7 +39,7 @@ for (let i = 0; i < arrayIcone.length; i++) {
     // Destructuring -> posso "prendere" le proprietà di ogni icona (in ordine) dell'Array originale
     const { name, prefix, family, type } = icona;
     const colore = coloreType[type];
-    // Assegno le proprietà da una funzione esterna
+    // Assegno le proprietà da una funzione esterna alle nuove costanti
     innerIcone(name, prefix, family, colore);
 };
 
