@@ -47,7 +47,7 @@ for (let i = 0; i < arrayIcone.length; i++) {
 // Function -> passo le singole proprietà per realizzare l'icona e il testo
 // pr1 = name / pr2 = prefix / pr3 = family / pr4 = color                 
 function innerIcone(pr1, pr2, pr3, pr4) {
-    domArrayIcone.innerHTML += `<div class="col-3 text-center border">                                                    
+    domArrayIcone.innerHTML += `<div class="col-3 text-center p-2">                                                    
                                     <h3 style="color:${pr4}"><i class="${pr3} ${pr2}${pr1}"></i></h3> 
                                     <h5 style="text-transform:uppercase">${pr1}</h5>
                                 </div>`
