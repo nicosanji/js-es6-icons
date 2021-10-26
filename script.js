@@ -5,7 +5,7 @@
 //    le icone.
 
 
-// Array originale di icone (name/prefix/type/family)
+// Array originale -> icone e testi (name/prefix/type/family)
 const arrayIcone = [
     { name: 'cat', prefix: 'fa-', type: 'animal', family: 'fas' },
     { name: 'crow', prefix: 'fa-', type: 'animal', family: 'fas' },
@@ -24,22 +24,32 @@ const arrayIcone = [
     { name: 'user-ninja', prefix: 'fa-', type: 'user', family: 'fas' },
     { name: 'user-secret', prefix: 'fa-', type: 'user', family: 'fas' }
 ];
-// type        color   hex      rgba
-// animal    = blue    #0000ff  rgba(0,0,255,255)
-// vegetable = orange  #ffa500  rgba(255,165,0,255) 
-// user      = purple  #800080  rgba(128,0,128,255)
+console.log(arrayIcone);
 
 // .querySelector -> seleziono l'elemento del DOM dove metterò l'array di icone
-const domArrayIcone = document.querySelector(".container");
+const domArrayIcone = document.querySelector(".row");
 
-// Ciclo For (classico) -> stampare tutte le icone dell'array originale
+// Array di Object -> type icone = colore HEX
+const coloreType = { animal: "#0000ff", vegetable: "#ffa500", user: "#800080" };
+console.log(coloreType);
+
+// Ciclo For (classico) -> realizzo le icone e assegno ad ogni icona le sue proprietà con destructuring
 for (let i = 0; i < arrayIcone.length; i++) {
-    // Prendo l'indice dall'array per ciclare
-    const iconaI = arrayIcone[i];
-    // .innerHTML -> "inietto" l'html con gli oggetti ciclati tramite l'indice
-    domArrayIcone.innerHTML += `<div class="col text-center">    
-                                    <i class="${iconaI.family} ${iconaI.prefix}${iconaI.name}"></i>
-                                    <p>${iconaI.name}</p>
+    const icona = arrayIcone[i];
+    // Destructuring -> posso "prendere" le proprietà di ogni icona (in ordine) dell'Array originale
+    const { name, prefix, family, type } = icona;
+    const colore = coloreType[type];
+    // Assegno le proprietà da una funzione esterna
+    innerIcone(name, prefix, family, colore);
+};
+
+
+// Function -> passo le singole proprietà per realizzare l'icona e il testo
+// pr1 = name / pr2 = prefix / pr3 = family / pr4 = color                 
+function innerIcone(pr1, pr2, pr3, pr4) {
+    domArrayIcone.innerHTML += `<div class="col-3 text-center border">                                                    
+                                    <h3 style="color:${pr4}"><i class="${pr3} ${pr2}${pr1}"></i></h3> 
+                                    <h5 style="text-transform:uppercase">${pr1}</h5>
                                 </div>`
 };
 
