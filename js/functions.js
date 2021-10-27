@@ -1,4 +1,6 @@
 
+"use strict";
+
 // Function -> creare ogni elemento del nuovo Array con i colori
 function innerIconeColor(arrayIcone) {
     // Variabile "vuota" per aggiungere l'html 

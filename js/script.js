@@ -36,7 +36,7 @@ const domSelect = document.querySelector(".form-select"); // Select
 let arrayIconeColor = arrayIcone.map(icona => {
     // Destructuring -> "genero" nuove variabili dagli elementi dell'Array originale
     const { name, prefix, type, family } = icona;
-    
+
     let iconaColor = { name, prefix, type, family };
     // Condizione -> colori in base al type
     if (iconaColor.type === "animal") { iconaColor["color"] = "#0000ff"; };
@@ -46,8 +46,30 @@ let arrayIconeColor = arrayIcone.map(icona => {
     return iconaColor;
 });
 
+
 // .addEventListener("change", event) -> "apposta" per le select, input ecc...
 domSelect.addEventListener("change", function () {
     // .filter -> devo filtrare attraverso la "select" gli elementi del nuovo Array tramite il type 
-    let changeType = this.value;
-    let filterType = arrayIconeColor.filter
+    let changeType = this.value; // This -> ciò che "scatena" l'evento
+    let filterType = arrayIconeColor.filter(function (filterTypeOff) {
+        // Condizione in base al type
+        if (changeType === filterTypeOff.type)
+            return true;
+    });
+    innerIconeColor(filterType);
+    // Condizione -> se riseleziono "all"
+    if (changeType === "all") {
+        innerIconeColor(arrayIconeColor);
+    };
+    console.log(`Ora hai selezionato il type ${changeType}`);
+});
+
+
+
+
+
+
+
+
+
+
